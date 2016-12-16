@@ -5,6 +5,7 @@ using UnityEngine;
  * Initial Build
  * Follows Tutorial from: https://noobtuts.com/unity/2d-tetris-game
  */
+
 public class Group : MonoBehaviour
 {
     // Time since last gravity tick
@@ -15,6 +16,7 @@ public class Group : MonoBehaviour
         if (!isValidGridPos())
         {
             Debug.Log("GAME OVER");
+            //GameOverFn();
             Destroy(gameObject);
         }
     }
