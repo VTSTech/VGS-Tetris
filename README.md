@@ -11,6 +11,7 @@ Added Play Button
 
 Added Exit Button
 
+Removed unused Standard Assets
 
 v0.0.1
 
