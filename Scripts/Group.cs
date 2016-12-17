@@ -16,7 +16,6 @@ public class Group : MonoBehaviour
         if (!isValidGridPos())
         {
             Debug.Log("GAME OVER");
-            //GameOverFn();
             Destroy(gameObject);
         }
     }
