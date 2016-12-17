@@ -2,6 +2,22 @@
 
 Simple 2D Tetris Game in Unity
 
+v0.0.1-r3
+
+Darkened Main Menu Button Text
+
+Added Main Menu Button Highlight
+
+Created Canvas on Game Scene
+
+Moved FrameRateCounter to Game Scene Canvas
+
+Added 'Score' Label to Game Scene
+
+Increment 'Score' Label by 10 on positive isRowFull() result
+
+Reorganized Assets into Folders
+
 
 v0.0.1-r2
 
