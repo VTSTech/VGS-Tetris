@@ -16,7 +16,7 @@ Incrememnt 'Line' Value by 1 on positive isRowFull() result
 
 Added TitleText to left side of Game Scene
 
-<img src="https://i.gyazo.com/178656266203addb1798279146e1ce1c.png">
+<img src="https://i.gyazo.com/cd5c2f6f32cce4f822b62c54da4902b6.png">
 
 v0.0.1-r3
 
