@@ -18,6 +18,7 @@ Increment 'Score' Label by 10 on positive isRowFull() result
 
 Reorganized Assets into Folders
 
+<img src="https://i.gyazo.com/22d66f04a77c903c789e0f445405e8e5.png">
 
 v0.0.1-r2
 
