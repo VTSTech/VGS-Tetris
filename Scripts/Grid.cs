@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-/* v0.0.1
- * Initial Build
- * Follows Tutorial from: https://noobtuts.com/unity/2d-tetris-game
+/* 
+ * v0.0.1-r4
+ * Written by Veritas83
+ * www.NigelTodman.com
  */
 
 public class Grid : MonoBehaviour {
@@ -71,8 +72,10 @@ public class Grid : MonoBehaviour {
         for (int x = 0; x < w; ++x)
             if (grid[x, y] == null)
                 return false;
+        //v0.0.1-r4
         GameObject go = GameObject.Find("Score");
         go.GetComponent<ScoreScript>().UpdateScore();
+        //
         return true;
     }
     public static void deleteFullRows()

@@ -2,6 +2,21 @@
 
 Simple 2D Tetris Game in Unity
 
+v0.0.1-r4
+
+Added different color textures
+
+Updated GitHub text to reflect Username/Repo
+
+Added 'Lines' text to Score Label
+
+Increment 'Score' Value by 12 on positive isRowFull() result
+
+Incrememnt 'Line' Value by 1 on positive isRowFull() result
+
+Added TitleText to left side of Game Scene
+
+
 v0.0.1-r3
 
 Darkened Main Menu Button Text
