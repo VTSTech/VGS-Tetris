@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/* v0.0.1
- * Initial Build
- * Follows Tutorial from: https://noobtuts.com/unity/2d-tetris-game
- */
+using UnityEngine.UI;
+
+//v0.0.1-r5
+//Scripts/Group.cs
 
 public class Group : MonoBehaviour
 {
@@ -16,6 +16,10 @@ public class Group : MonoBehaviour
         if (!isValidGridPos())
         {
             Debug.Log("GAME OVER");
+            //v0.0.1-r5
+            GameObject gop = GameObject.Find("Spawner");
+            gop.GetComponent<Spawner>().GameOverFn();
+            //
             Destroy(gameObject);
         }
     }
@@ -97,7 +101,7 @@ public class Group : MonoBehaviour
 
         // Move Downwards and Fall
         else if (Input.GetKeyDown(KeyCode.DownArrow) ||
-                 Time.time - lastFall >= 25)
+                 Time.time - lastFall >= 1)
         {
             // Modify position
             transform.position += new Vector3(0, -1, 0);
@@ -158,6 +162,6 @@ public class Group : MonoBehaviour
             Vector2 v = Grid.roundVec2(child.position);
             Grid.grid[(int)v.x, (int)v.y] = child;
         }
-    }
+    }		
     //End
 }

@@ -4,23 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* 
- * v0.0.1-r4
+ * v0.0.1-r5
  * Written by Veritas83
  * www.NigelTodman.com
  */
 
 public class Grid : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     // The Grid itself
     public static int w = 10;
     public static int h = 20;

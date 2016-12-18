@@ -2,6 +2,23 @@
 
 Simple 2D Tetris Game in Unity
 
+v0.0.1-r5
+
+Added two more colors for textures
+
+Each Object has its own unique color now
+
+Increased size of Score/Lines text in Game Scene
+
+Added GameOverPanel PreFab
+
+Added Restart button to GameOverPanel PreFab
+
+Added Quit button to GameOverPanel PreFab
+
+Added GameOverFn();
+
+
 v0.0.1-r4
 
 Added different color textures
