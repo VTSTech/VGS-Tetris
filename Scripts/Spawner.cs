@@ -36,6 +36,6 @@ public class Spawner : MonoBehaviour {
         GameObject gopactual = GameObject.Find("GameOverPanel(Clone)");
         GameObject gopparent = GameObject.Find("GameSceneUICanvas");
         gopactual.transform.parent = gopparent.transform;
-        gopactual.transform.SetPositionAndRotation(new Vector3(585, 300, 0), Quaternion.identity);
+        gopactual.transform.SetPositionAndRotation(new Vector2(685, 320), Quaternion.identity);
     }
 }
