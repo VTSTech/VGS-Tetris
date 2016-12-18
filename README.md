@@ -18,6 +18,8 @@ Added Quit button to GameOverPanel PreFab
 
 Added GameOverFn();
 
+<img src="https://i.gyazo.com/4e0584ba5dbb3dfb9113bcd7f1ccec55.png">
+
 
 v0.0.1-r4
 
