@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 //v0.0.1-r5
 //Scripts/Group.cs
-
+//High score was updating and persisting for new game (not restart)
+//Getting reset to 0 at some point....
+//....
 public class Group : MonoBehaviour
 {
     // Time since last gravity tick
@@ -15,11 +17,9 @@ public class Group : MonoBehaviour
         // Default position not valid? Then it's game over
         if (!isValidGridPos())
         {
-            Debug.Log("GAME OVER");
-            //v0.0.1-r5
-            GameObject gop = GameObject.Find("Spawner");
+            //Debug.Log("GAME OVER");
+            GameObject gop = GameObject.FindGameObjectWithTag("spawner");
             gop.GetComponent<Spawner>().GameOverFn();
-            //
             Destroy(gameObject);
         }
     }

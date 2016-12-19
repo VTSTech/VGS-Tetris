@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
 
-	// Use this for initialization
-	void Start ()
+    public GameObject[] GameOverPanel;
+    // Use this for initialization
+    void Start ()
     {
         spawnNext();
+        
     }
 	
 	// Update is called once per frame
@@ -28,14 +30,14 @@ public class Spawner : MonoBehaviour {
         Instantiate(groups[i],transform.position,Quaternion.identity);
     }
     //GameOverPanel
-    public GameObject[] GameOverPanel;
     public void GameOverFn()
     {
         Debug.Log("GameOverFn() fired!");
+        GameObject gsui = GameObject.FindGameObjectWithTag("gsui");
+        gsui.GetComponent<ScoreScript>().UpdateHighScore();
         Instantiate(GameOverPanel[0], new Vector2(0,0),Quaternion.identity);
         GameObject gopactual = GameObject.Find("GameOverPanel(Clone)");
-        GameObject gopparent = GameObject.Find("GameSceneUICanvas");
-        gopactual.transform.parent = gopparent.transform;
+        gopactual.transform.parent = gsui.transform;
         gopactual.transform.SetPositionAndRotation(new Vector2(685, 320), Quaternion.identity);
     }
 }

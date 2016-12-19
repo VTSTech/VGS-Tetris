@@ -62,7 +62,7 @@ public class Grid : MonoBehaviour {
             if (grid[x, y] == null)
                 return false;
         //v0.0.1-r4
-        GameObject go = GameObject.Find("Score");
+        GameObject go = GameObject.FindGameObjectWithTag("gsui");
         go.GetComponent<ScoreScript>().UpdateScore();
         //
         return true;

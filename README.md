@@ -2,6 +2,24 @@
 
 Simple 2D Tetris Game in Unity
 
+v0.0.1-r6
+
+Moved block spawner up a few lines
+
+Added High Score (not persistent yet)
+
+Added GameManager Object
+
+Added UpdateHighScore();
+
+Added RefreshHighScore();
+
+Added NewGame();
+
+GameOverPanel now properly destroys itself
+
+<img src="https://i.gyazo.com/7f1e18d7354d1344ef77d1538efbd36f.png">
+
 v0.0.1-r5
 
 Added two more colors for textures
