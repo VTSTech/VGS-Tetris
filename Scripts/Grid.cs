@@ -61,7 +61,7 @@ public class Grid : MonoBehaviour {
         for (int x = 0; x < w; ++x)
             if (grid[x, y] == null)
                 return false;
-        //v0.0.1-r4
+        //v0.0.1-r7
         GameObject go = GameObject.FindGameObjectWithTag("gsui");
         go.GetComponent<ScoreScript>().UpdateScore();
         //

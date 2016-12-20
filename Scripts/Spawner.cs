@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//v0.0.1-r5
+//v0.0.1-r7
 //Scripts/Spawner.cs
 
 public class Spawner : MonoBehaviour {

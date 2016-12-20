@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//v0.0.1-r5
+//v0.0.1-r7
 //Scripts/Group.cs
-//High score was updating and persisting for new game (not restart)
-//Getting reset to 0 at some point....
-//....
+
 public class Group : MonoBehaviour
 {
     // Time since last gravity tick
@@ -26,7 +24,8 @@ public class Group : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastFall >= 1)
+        //FallSpeed called
+        if (Time.time - lastFall >= GameManager.Instance.FallSpeed)
         { 
             {
             // Modify position

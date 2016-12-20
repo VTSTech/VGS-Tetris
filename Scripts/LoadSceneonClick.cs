@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneonClick : MonoBehaviour
 {
-
     public void LoadByIndex(int sceneIndex)
     {
         DestroyImmediate(GameObject.Find("GameOverPanel(Clone)"));

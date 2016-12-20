@@ -2,6 +2,37 @@
 
 Simple 2D Tetris Game in Unity
 
+v0.0.1-r7
+
+Added Background to MainMenu
+
+Added Settings Menu
+
+Added Player Name
+
+Added Music
+
+PlayerName and HighScore now saved to file.
+
+Added Levels
+
+FallSpeed now increases on Level Up
+
+Added SaveSettings();
+
+Added SavePlayer();
+
+Added SaveMusic();
+
+Added LoadPlayer();
+
+Added WriteHighScore();
+
+Music Source: http://opsound.org/artist/macroform/
+
+<img src="https://i.gyazo.com/52b1a79ed9a18ed573879e06e4adf85b.jpg">
+
+
 v0.0.1-r6
 
 Moved block spawner up a few lines
@@ -19,6 +50,7 @@ Added NewGame();
 GameOverPanel now properly destroys itself
 
 <img src="https://i.gyazo.com/7f1e18d7354d1344ef77d1538efbd36f.png">
+
 
 v0.0.1-r5
 
@@ -55,6 +87,7 @@ Added TitleText to left side of Game Scene
 
 <img src="https://i.gyazo.com/cd5c2f6f32cce4f822b62c54da4902b6.png">
 
+
 v0.0.1-r3
 
 Darkened Main Menu Button Text
@@ -73,6 +106,7 @@ Reorganized Assets into Folders
 
 <img src="https://i.gyazo.com/22d66f04a77c903c789e0f445405e8e5.png">
 
+
 v0.0.1-r2
 
 Added Main Menu
@@ -82,6 +116,7 @@ Added Play Button
 Added Exit Button
 
 Removed unused Standard Assets
+
 
 v0.0.1
 
