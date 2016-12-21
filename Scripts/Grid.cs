@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* 
- * v0.0.1-r5
+ * v0.0.1-r8
  * Written by Veritas83
  * www.NigelTodman.com
+ * /Scripts/Grid.cs
  */
 
 public class Grid : MonoBehaviour {

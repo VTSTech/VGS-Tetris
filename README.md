@@ -2,6 +2,23 @@
 
 Simple 2D Tetris Game in Unity
 
+v0.0.1-r8
+
+PlayerName is now properly displayed in Settings Panel
+
+Music Toggle is now saved to file.
+
+Settings are now loaded from file when the game starts
+
+Also when the settings panel is opened.
+
+Player Name is now shown above 'High Score' on Game Scene.
+
+Moved 'TitleText' slightly left on Game Scene.
+
+<img src="https://i.gyazo.com/de0e72fae24dab963d11bb7362691970.png">
+
+
 v0.0.1-r7
 
 Added Background to MainMenu

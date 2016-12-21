@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/* 
+ * v0.0.1-r8
+ * Written by Veritas83
+ * www.NigelTodman.com
+ * /Scripts/LoadSceneonClick.cs
+ */
 public class LoadSceneonClick : MonoBehaviour
 {
     public void LoadByIndex(int sceneIndex)

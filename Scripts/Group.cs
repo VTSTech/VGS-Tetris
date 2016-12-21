@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//v0.0.1-r7
-//Scripts/Group.cs
+/* 
+ * v0.0.1-r8
+ * Written by Veritas83
+ * www.NigelTodman.com
+ * /Scripts/Group.cs
+ */
 
 public class Group : MonoBehaviour
 {

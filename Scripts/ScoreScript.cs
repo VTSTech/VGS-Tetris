@@ -5,19 +5,25 @@ using UnityEngine.UI;
 using System.IO;
 using System.Text;
 
-//v0.0.1-r7
-//Scripts/ScoreScript.cs
+/* 
+ * v0.0.1-r8
+ * Written by Veritas83
+ * www.NigelTodman.com
+ * /Scripts/ScoreScript.cs
+ */
 
 public class ScoreScript : MonoBehaviour {
     private string ScoreDisplay = "";
     private string HighScoreDisplay = "";
+    //private string PlayerDisplay = "";
     public Text ScoreLabel;
     public Text HighScoreLabel;
-
+    public Text PlayerLabel;
     // Use this for initialization
     void Start () {
         GameManager.Instance.NewGame();
         ScoreLabel.text = "Score: " + GameManager.Instance.ScoreValue.ToString() + "\n Lines: " + GameManager.Instance.LineValue.ToString() + "\n Level: " + GameManager.Instance.GameLevel.ToString();
+        PlayerLabel.text = GameManager.Instance.SetPlayerName;
     }
 	
 	// Update is called once per frame

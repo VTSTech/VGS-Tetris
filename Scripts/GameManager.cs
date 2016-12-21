@@ -5,6 +5,12 @@ using UnityEngine.UI;
 using System.IO;
 using System.Text;
 
+/* 
+ * v0.0.1-r8
+ * Written by Veritas83
+ * www.NigelTodman.com
+ * /Scripts/GameManager.cs
+ */
 public class GameManager : MonoBehaviour {
     public static GameManager Instance
     {
@@ -22,6 +28,7 @@ public class GameManager : MonoBehaviour {
     public float FallSpeed = 1f;
     public int GameLevel = 0;
     public string SetPlayerName = "Player";
+    public InputField myInputField;
     void Awake()
     {
         if(instance)
@@ -34,7 +41,7 @@ public class GameManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        
+        LoadSettings();
     }
 	
 	// Update is called once per frame
@@ -48,11 +55,14 @@ public class GameManager : MonoBehaviour {
         GameManager.Instance.ScoreValue = 0;
         string ScoreFile = Application.dataPath + "/Scores.dat";
         GameObject gsui = GameObject.FindGameObjectWithTag("gsui");
+        GameObject PlayerLabel = GameObject.FindGameObjectWithTag("PlayerLabel");
         gsui.GetComponent<ScoreScript>().RefreshHighScore();
         if (File.Exists(ScoreFile) == false)
         {
             File.Create(ScoreFile);
         }
+        PlayerLabel.GetComponent<Text>().text = GameManager.Instance.SetPlayerName;
+        LoadSettings();
         //Debug Stuff
         Debug.Log(ScoreFile);
         Debug.Log(File.Exists(ScoreFile));
@@ -70,17 +80,24 @@ public class GameManager : MonoBehaviour {
     }
     public void SaveMusic()
     {
+        string MusicFile = Application.dataPath + "/Music.dat";
+        if (File.Exists(MusicFile) == false)
+        {
+            File.Create(MusicFile);
+        }
         GameObject MusicToggle = GameObject.FindGameObjectWithTag("MusicToggle");
         GameObject BGM = GameObject.FindGameObjectWithTag("bgmusic");
         if (MusicToggle.GetComponent<Toggle>().isOn == false)
         {
             BGM.GetComponent<AudioSource>().Stop();
             Debug.Log("Music Stopped");
+            File.WriteAllText(MusicFile,"Off");
         }
         else
         {
             BGM.GetComponent<AudioSource>().Play();
             Debug.Log("Music Started");
+            File.WriteAllText(MusicFile, "On");
         }
     }
     public void SaveSettings()
@@ -96,8 +113,38 @@ public class GameManager : MonoBehaviour {
             File.Create(PlayerFile);
         }
         SetPlayerName = File.ReadAllText(PlayerFile);
-        GameObject PlayerText = GameObject.FindGameObjectWithTag("Player");
-        PlayerText.GetComponent<Text>().text.Insert(0,SetPlayerName);
+        //GameObject PlayerText = GameObject.FindGameObjectWithTag("Player");
+        myInputField.text = SetPlayerName;
+        
         Debug.Log("Player Name set to: " + SetPlayerName);
+    }
+    public void LoadMusic()
+    {
+        string MusicFile = Application.dataPath + "/Music.dat";
+        string MusicSetting;
+        GameObject MusicToggle = GameObject.FindGameObjectWithTag("MusicToggle");
+        GameObject BGM = GameObject.FindGameObjectWithTag("bgmusic");
+        if (File.Exists(MusicFile) == false)
+        {
+            File.Create(MusicFile);
+            File.WriteAllText(MusicFile, "On");
+        }
+        MusicSetting = File.ReadAllText(MusicFile);
+        if (MusicSetting == "Off")
+        {
+            BGM.GetComponent<AudioSource>().Stop();
+            Debug.Log("Music Stopped");
+            MusicToggle.GetComponent<Toggle>().isOn = false;
+        } else if (MusicSetting == "On")
+        {
+            BGM.GetComponent<AudioSource>().Play();
+            Debug.Log("Music Started");
+            MusicToggle.GetComponent<Toggle>().isOn = true;
+        }
+    }
+    public void LoadSettings()
+    {
+        LoadPlayer();
+        LoadMusic();
     }
 }
