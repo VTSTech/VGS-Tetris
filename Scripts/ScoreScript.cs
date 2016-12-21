@@ -12,7 +12,8 @@ using System.Text;
  * /Scripts/ScoreScript.cs
  */
 
-public class ScoreScript : MonoBehaviour {
+public class ScoreScript : MonoBehaviour
+{
     private string ScoreDisplay = "";
     private string HighScoreDisplay = "";
     //private string PlayerDisplay = "";
@@ -20,16 +21,18 @@ public class ScoreScript : MonoBehaviour {
     public Text HighScoreLabel;
     public Text PlayerLabel;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         GameManager.Instance.NewGame();
         ScoreLabel.text = "Score: " + GameManager.Instance.ScoreValue.ToString() + "\n Lines: " + GameManager.Instance.LineValue.ToString() + "\n Level: " + GameManager.Instance.GameLevel.ToString();
         PlayerLabel.text = GameManager.Instance.SetPlayerName;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
     public void UpdateScore()
     {
         GameManager.Instance.ScoreValue = GameManager.Instance.ScoreValue + 12;
@@ -40,7 +43,7 @@ public class ScoreScript : MonoBehaviour {
         {
             GameManager.Instance.FallSpeed = (10f - GameManager.Instance.GameLevel) * 0.1f;
         }
-        else if (GameManager.Instance.GameLevel >=7 && GameManager.Instance.GameLevel <= 9)
+        else if (GameManager.Instance.GameLevel >= 7 && GameManager.Instance.GameLevel <= 9)
         {
             GameManager.Instance.FallSpeed = (10f - GameManager.Instance.GameLevel) * 0.1f + 0.05f;
         }
@@ -54,7 +57,7 @@ public class ScoreScript : MonoBehaviour {
         }
         ScoreDisplay = "Score: " + GameManager.Instance.ScoreValue.ToString() + "\n Lines: " + GameManager.Instance.LineValue.ToString() + "\n Level: " + GameManager.Instance.GameLevel.ToString();
         ScoreLabel.text = ScoreDisplay;
-        
+
     }
     public void UpdateHighScore()
     {
@@ -72,9 +75,14 @@ public class ScoreScript : MonoBehaviour {
     public void RefreshHighScore()
     {
         //GameManager.Instance.HighScore = GameManager.Instance.ScoreValue;
+        if (GameManager.Instance.HighScore == 0)
+        {
+            LoadHighScore();
+        }
         HighScoreDisplay = "High Score: " + GameManager.Instance.HighScore.ToString();
         HighScoreLabel.text = HighScoreDisplay;
         Debug.Log("RefreshHighScore() fired!");
+        
     }
     public void WriteHighScore()
     {
@@ -83,8 +91,32 @@ public class ScoreScript : MonoBehaviour {
         if (GameManager.Instance.HighScore > 0 && File.Exists(Filename))
         {
             output = GameManager.Instance.SetPlayerName + "," + GameManager.Instance.HighScore + "," + System.DateTime.Now;
-            File.AppendAllText(Filename, output);
+            File.AppendAllText(Filename, output + "\n");
             Debug.Log("WriteHighScore() fired!");
+        }
+    }
+    public void LoadHighScore()
+    {
+        string Filename = Application.dataPath + "/Scores.dat";
+        //string ScoreDataRead = "";
+        //string[] ScoreDataResult;
+        if (File.Exists(Filename))
+        {
+            //output = GameManager.Instance.SetPlayerName + "," + GameManager.Instance.HighScore + "," + System.DateTime.Now;
+            string ScoreDataRead = File.ReadAllText(Filename);
+            string[] ScoreDataResult = ScoreDataRead.Split('\n');
+            foreach (string x in ScoreDataResult)
+            {
+                string[] ScoreDataResult2 = x.Split(',');
+                if (ScoreDataResult2[0] == GameManager.Instance.SetPlayerName)
+                {
+                    GameManager.Instance.HighScore = int.Parse(ScoreDataResult2[1]);
+                }
+                RefreshHighScore();
+            }
+            //Debug Stuff
+            Debug.Log("LoadHighScore() fired!");
+            Debug.Log("Result: " + ScoreDataResult[0]);
         }
     }
 }

@@ -2,6 +2,15 @@
 
 Simple 2D Tetris Game in Unity
 
+v0.0.1-r9
+
+Now loads HighScore for set PlayerName
+
+Added LoadHighScore();
+
+<img src="https://i.gyazo.com/9b811da6312cbdf0cfd237f856d1c345.png">
+
+
 v0.0.1-r8
 
 PlayerName is now properly displayed in Settings Panel
