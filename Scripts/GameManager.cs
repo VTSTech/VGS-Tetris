@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 
 /* 
- * v0.0.1-r10
+ * v0.0.1-r11
  * Written by Veritas83
  * www.NigelTodman.com
  * /Scripts/GameManager.cs
@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
+        GameObject sm = GameObject.FindGameObjectWithTag("SettingsMenu");
+        DontDestroyOnLoad(sm);
         LoadSettings();
     }
 	
@@ -57,6 +59,8 @@ public class GameManager : MonoBehaviour {
         string ScoreFile = Application.dataPath + "/Scores.dat";
         GameObject gsui = GameObject.FindGameObjectWithTag("gsui");
         GameObject PlayerLabel = GameObject.FindGameObjectWithTag("PlayerLabel");
+        GameObject pl = GameObject.FindGameObjectWithTag("PauseLabel");
+        pl.GetComponent<Text>().enabled = false;
         gsui.GetComponent<ScoreScript>().RefreshHighScore();
         if (File.Exists(ScoreFile) == false)
         {

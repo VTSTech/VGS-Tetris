@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* 
- * v0.0.1-r10
+ * v0.0.1-r11
  * Written by Veritas83
  * www.NigelTodman.com
  * /Scripts/Group.cs
@@ -15,7 +15,7 @@ public class Group : MonoBehaviour
     // Time since last gravity tick
     public float lastFall = 0;
     void Start()
-    {    
+    {
         // Default position not valid? Then it's game over
         if (!isValidGridPos())
         {
@@ -30,31 +30,31 @@ public class Group : MonoBehaviour
     {
         //FallSpeed called
         if (Time.time - lastFall >= GameManager.Instance.FallSpeed)
-        { 
+        {
             {
-            // Modify position
-            transform.position += new Vector3(0, -1, 0);
+                // Modify position
+                transform.position += new Vector3(0, -1, 0);
 
-            // See if valid
-            if (isValidGridPos())
-            {
-                // It's valid. Update grid.
-                updateGrid();
-            }
-            else
-            {
-                // It's not valid. revert.
-                transform.position += new Vector3(0, 1, 0);
+                // See if valid
+                if (isValidGridPos())
+                {
+                    // It's valid. Update grid.
+                    updateGrid();
+                }
+                else
+                {
+                    // It's not valid. revert.
+                    transform.position += new Vector3(0, 1, 0);
 
-                // Clear filled horizontal lines
-                Grid.deleteFullRows();
+                    // Clear filled horizontal lines
+                    Grid.deleteFullRows();
 
-                // Spawn next Group
-                FindObjectOfType<Spawner>().spawnNext();
+                    // Spawn next Group
+                    FindObjectOfType<Spawner>().spawnNext();
 
-                // Disable script
-                enabled = false;
-            }
+                    // Disable script
+                    enabled = false;
+                }
                 lastFall = Time.time;
             }
         }
@@ -131,6 +131,23 @@ public class Group : MonoBehaviour
             }
 
             lastFall = Time.time;
+        }
+        //v0.0.1-r11
+        //Pause
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameObject pl = GameObject.FindGameObjectWithTag("PauseLabel");
+            if (Time.timeScale != 0.01f)
+            {
+                Time.timeScale = 0.01f;
+                Debug.Log("PAUSED! " + Time.timeScale.ToString());
+                pl.GetComponent<Text>().enabled = true;
+            }else{
+                Time.timeScale = 1.0f;
+                Debug.Log("UNPAUSED!");
+                pl.GetComponent<Text>().enabled = false;
+            }
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
         }
     }
     bool isValidGridPos()

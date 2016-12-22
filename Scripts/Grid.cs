@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* 
- * v0.0.1-r10
+ * v0.0.1-r11
  * Written by Veritas83
  * www.NigelTodman.com
  * /Scripts/Grid.cs
@@ -81,7 +81,7 @@ public class Grid : MonoBehaviour {
                 deleteRow(y);
                 decreaseRowsAbove(y + 1);
                 --y;
-                //v0.0.1-r10
+                //v0.0.1-r11
                 if (prev == true)
                 {
                     cons++;

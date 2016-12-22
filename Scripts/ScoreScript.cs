@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 
 /* 
- * v0.0.1-r10
+ * v0.0.1-r11
  * Written by Veritas83
  * www.NigelTodman.com
  * /Scripts/ScoreScript.cs
@@ -61,7 +61,7 @@ public class ScoreScript : MonoBehaviour
                 //gmgr.GetComponent<GameManager>().ScreenFlash();
                 GameManager.Instance.ScoreValue = GameManager.Instance.ScoreValue + 12;
             }
-        } else if (GameManager.Instance.GameLevel > 1 && GameManager.Instance.GameLevel <= 6)
+        } else if (GameManager.Instance.GameLevel >= 1 && GameManager.Instance.GameLevel <= 6)
         {
             if (Grid.cons == 4)
             {

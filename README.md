@@ -2,6 +2,14 @@
 
 Simple 2D Tetris Game in Unity
 
+v0.0.1-r11
+
+Added Pause Menu (Press Esc)
+
+Fixed bug where screen wasn't flashing on Level 1 for quadruple lines
+
+<img src="https://i.gyazo.com/babd0626650e0610ad0dcad2bd817576.png">
+
 v0.0.1-r10
 
 Added 'High Scores' Panel
