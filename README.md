@@ -14,7 +14,7 @@ Added Score Multiplier for double/triple/quadruple Lines
 
 Now using standardized colors for Tetrominos
 
-Scree now flashes on quadruple lines
+Screen now flashes on quadruple lines
 
 <img src="https://i.gyazo.com/e4de58b250221577e20fd18d50f6d4d2.gif">
 
