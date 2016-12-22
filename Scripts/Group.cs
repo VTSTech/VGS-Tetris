@@ -148,6 +148,7 @@ public class Group : MonoBehaviour
                 Grid.grid[(int)v.x, (int)v.y].parent != transform)
                 return false;
         }
+        GameManager.Instance.isGameOver = false;
         return true;
     }
     void updateGrid()

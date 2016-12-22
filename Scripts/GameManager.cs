@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour {
     public int GameLevel = 0;
     public string SetPlayerName = "Player";
     public InputField myInputField;
+    public bool isGameOver = false;
     void Awake()
     {
         if(instance)
@@ -146,5 +147,35 @@ public class GameManager : MonoBehaviour {
     {
         LoadPlayer();
         LoadMusic();
+    }
+    public void ScreenFlash()
+    {
+        Debug.Log("ScreenFlash() fired!");
+        StartCoroutine("LerpColor");
+        //GameObject go = GameObject.FindGameObjectWithTag("MainCamera");
+        //go.GetComponent<Camera>().backgroundColor = Color.white;
+        //go.GetComponent<Camera>().backgroundColor = Color.Lerp(Color.black,Color.white,2.5f);
+        //go.GetComponent<Camera>().backgroundColor = Color.black;
+    }
+    IEnumerator LerpColor()
+    {
+        for (int c = 0; c <= 4; c++) { 
+        float t = 0f;
+        float duration = 0.06f;
+        float smoothness = 0.01f;
+        float increment = smoothness / duration;
+        Debug.Log("LerpColor() fired!");
+        GameObject go = GameObject.FindGameObjectWithTag("MainCamera");
+        go.GetComponent<Camera>().backgroundColor = Color.white;
+        while (t <= 1)
+        {
+            go.GetComponent<Camera>().backgroundColor = Color.Lerp(Color.gray, Color.white, t);
+            t += increment;
+            Debug.Log("T Value: " + t.ToString());
+            yield return new WaitForSeconds(smoothness);
+        }
+        go.GetComponent<Camera>().backgroundColor = Color.black;
+        yield return true;
+        }
     }
 }

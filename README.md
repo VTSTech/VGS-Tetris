@@ -8,9 +8,15 @@ Added 'High Scores' Panel
 
 Added ShowHighScores();
 
-Added Score Multiplyer with Level Up
+Added Score Multiplier with Level Up
 
-Added Score Multiplyer for Double/Quadruple Lines
+Added Score Multiplier for double/triple/quadruple Lines
+
+Now using standardized colors for Tetrominos
+
+Scree now flashes on quadruple lines
+
+<img src="https://i.gyazo.com/e4de58b250221577e20fd18d50f6d4d2.gif">
 
 
 v0.0.1-r9

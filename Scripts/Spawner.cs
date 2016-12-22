@@ -37,6 +37,7 @@ public class Spawner : MonoBehaviour {
     public void GameOverFn()
     {
         Debug.Log("GameOverFn() fired!");
+        GameManager.Instance.isGameOver = true;
         GameObject gsui = GameObject.FindGameObjectWithTag("gsui");
         gsui.GetComponent<ScoreScript>().UpdateHighScore();
         Instantiate(GameOverPanel[0], new Vector2(0,0),Quaternion.identity);

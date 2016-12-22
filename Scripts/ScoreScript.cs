@@ -38,25 +38,39 @@ public class ScoreScript : MonoBehaviour
     {
         GameManager.Instance.LineValue = GameManager.Instance.LineValue + 1;
         GameManager.Instance.GameLevel = (GameManager.Instance.LineValue / 10);
+        GameObject gmgr = GameObject.FindGameObjectWithTag("GameManager");
         if (GameManager.Instance.GameLevel == 0)
         {
             if (Grid.cons == 4)
             {
+                gmgr.GetComponent<GameManager>().ScreenFlash();
                 GameManager.Instance.ScoreValue = GameManager.Instance.ScoreValue + 96;
+            }
+            else if (Grid.cons == 3)
+            {
+                //gmgr.GetComponent<GameManager>().ScreenFlash();
+                GameManager.Instance.ScoreValue = GameManager.Instance.ScoreValue + 36;
             }
             else if (Grid.cons == 2)
             {
+                //gmgr.GetComponent<GameManager>().ScreenFlash();
                 GameManager.Instance.ScoreValue = GameManager.Instance.ScoreValue + 24;
             }
             else if (Grid.cons <= 1)
             {
+                //gmgr.GetComponent<GameManager>().ScreenFlash();
                 GameManager.Instance.ScoreValue = GameManager.Instance.ScoreValue + 12;
             }
         } else if (GameManager.Instance.GameLevel > 1 && GameManager.Instance.GameLevel <= 6)
         {
             if (Grid.cons == 4)
             {
+                gmgr.GetComponent<GameManager>().ScreenFlash();
                 GameManager.Instance.ScoreValue = GameManager.Instance.ScoreValue + (96 * GameManager.Instance.GameLevel);
+            }
+            else if (Grid.cons == 3)
+            {
+                GameManager.Instance.ScoreValue = GameManager.Instance.ScoreValue + (36 * GameManager.Instance.GameLevel);
             }
             else if (Grid.cons == 2)
             {
@@ -70,7 +84,12 @@ public class ScoreScript : MonoBehaviour
         {
             if (Grid.cons == 4)
             {
+                gmgr.GetComponent<GameManager>().ScreenFlash();
                 GameManager.Instance.ScoreValue = GameManager.Instance.ScoreValue + 576;
+            }
+            else if (Grid.cons == 3)
+            {
+                GameManager.Instance.ScoreValue = GameManager.Instance.ScoreValue + 216;
             }
             else if (Grid.cons == 2)
             {
@@ -133,7 +152,7 @@ public class ScoreScript : MonoBehaviour
     {
         string Filename = Application.dataPath + "/Scores.dat";
         string output = "";
-        if (GameManager.Instance.HighScore > 0 && File.Exists(Filename))
+        if (GameManager.Instance.HighScore > 0 && File.Exists(Filename) && GameManager.Instance.isGameOver == true)
         {
             output = GameManager.Instance.SetPlayerName + "," + GameManager.Instance.HighScore + "," + System.DateTime.Now;
             File.AppendAllText(Filename, output + "\n");
