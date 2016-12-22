@@ -8,7 +8,6 @@ Added Pause Menu (Press Esc)
 
 Fixed bug where screen wasn't flashing on Level 1 for quadruple lines
 
-<img src="https://i.gyazo.com/babd0626650e0610ad0dcad2bd817576.png">
 
 v0.0.1-r10
 
