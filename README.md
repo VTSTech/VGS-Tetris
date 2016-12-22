@@ -2,6 +2,17 @@
 
 Simple 2D Tetris Game in Unity
 
+v0.0.1-r10
+
+Added 'High Scores' Panel
+
+Added ShowHighScores();
+
+Added Score Multiplyer with Level Up
+
+Added Score Multiplyer for Double/Quadruple Lines
+
+
 v0.0.1-r9
 
 Now loads HighScore for set PlayerName

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* 
- * v0.0.1-r8
+ * v0.0.1-r10
  * Written by Veritas83
  * www.NigelTodman.com
  * /Scripts/Group.cs

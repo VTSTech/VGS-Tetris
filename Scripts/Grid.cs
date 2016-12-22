@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* 
- * v0.0.1-r8
+ * v0.0.1-r10
  * Written by Veritas83
  * www.NigelTodman.com
  * /Scripts/Grid.cs
@@ -15,6 +15,8 @@ public class Grid : MonoBehaviour {
     public static int w = 10;
     public static int h = 20;
     public static Transform[,] grid = new Transform[w, h];
+    public static int cons = 0;
+    public static bool prev = false;
     public static Vector2 roundVec2(Vector2 v)
     {
         return new Vector2(Mathf.Round(v.x),
@@ -61,15 +63,17 @@ public class Grid : MonoBehaviour {
     {
         for (int x = 0; x < w; ++x)
             if (grid[x, y] == null)
+            {
+                prev = false;
                 return false;
-        //v0.0.1-r7
-        GameObject go = GameObject.FindGameObjectWithTag("gsui");
-        go.GetComponent<ScoreScript>().UpdateScore();
-        //
+            }
+        prev = true;
         return true;
     }
     public static void deleteFullRows()
     {
+        cons = 0;
+        prev = false;
         for (int y = 0; y < h; ++y)
         {
             if (isRowFull(y))
@@ -77,6 +81,17 @@ public class Grid : MonoBehaviour {
                 deleteRow(y);
                 decreaseRowsAbove(y + 1);
                 --y;
+                //v0.0.1-r10
+                if (prev == true)
+                {
+                    cons++;
+                } else
+                {
+                    cons = 1;
+                }
+                Debug.Log("Cons: " + cons.ToString());
+                GameObject go = GameObject.FindGameObjectWithTag("gsui");
+                go.GetComponent<ScoreScript>().UpdateScore();
             }
         }
     }

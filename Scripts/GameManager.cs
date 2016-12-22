@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 
 /* 
- * v0.0.1-r8
+ * v0.0.1-r10
  * Written by Veritas83
  * www.NigelTodman.com
  * /Scripts/GameManager.cs
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour {
         {
             BGM.GetComponent<AudioSource>().Stop();
             Debug.Log("Music Stopped");
-            File.WriteAllText(MusicFile,"Off");
+            File.WriteAllText(MusicFile, "Off");
         }
         else
         {
