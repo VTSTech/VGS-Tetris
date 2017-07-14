@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 
 /* 
- * v0.0.1-r11
+ * v0.0.2-r12
  * Written by Veritas83
  * www.NigelTodman.com
  * /Scripts/GameManager.cs
@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
     private static GameManager instance = null;
     public int HighScore = 0;
     public int ScoreValue = 0;
+    public int LastScore = 0;
     public int LineValue = 0;
     public bool IsPaused = false;
     public bool InputAllowed = true;

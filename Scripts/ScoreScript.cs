@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 
 /* 
- * v0.0.1-r11
+ * v0.0.2-r12
  * Written by Veritas83
  * www.NigelTodman.com
  * /Scripts/ScoreScript.cs
@@ -21,6 +21,10 @@ public class ScoreScript : MonoBehaviour
     public Text HighScoreLabel;
     public Text PlayerLabel;
     bool HighScoreRefreshed = false;
+    const string privCode = "";
+    const string pubCode = "";
+    const string baseURL = "http://dreamlo.com/lb/";
+
     // Use this for initialization
     void Start()
     {
@@ -124,9 +128,11 @@ public class ScoreScript : MonoBehaviour
     }
     public void UpdateHighScore()
     {
+        GameManager.Instance.LastScore = GameManager.Instance.ScoreValue;
         if (GameManager.Instance.ScoreValue > GameManager.Instance.HighScore && GameManager.Instance.ScoreValue != 0)
         {
             GameManager.Instance.HighScore = GameManager.Instance.ScoreValue;
+            GameManager.Instance.LastScore = GameManager.Instance.ScoreValue;
             GameManager.Instance.ScoreValue = 0;
             Debug.Log("High Score Updated!");
             HighScoreDisplay = "High Score: " + GameManager.Instance.HighScore.ToString();
@@ -141,15 +147,18 @@ public class ScoreScript : MonoBehaviour
         if (GameManager.Instance.HighScore == 0 && HighScoreRefreshed == false)
         {
             LoadHighScore();
+            //StartCoroutine("DownloadHighscoresFromDatabase");
             HighScoreRefreshed = true;
         }
         HighScoreDisplay = "High Score: " + GameManager.Instance.HighScore.ToString();
         HighScoreLabel.text = HighScoreDisplay;
+        StartCoroutine("DownloadHighscoresFromDatabase");
         Debug.Log("RefreshHighScore() fired!");
         
     }
     public void WriteHighScore()
     {
+        StartCoroutine(UploadNewHighScore(GameManager.Instance.SetPlayerName, GameManager.Instance.LastScore));
         string Filename = Application.dataPath + "/Scores.dat";
         string output = "";
         if (GameManager.Instance.HighScore > 0 && File.Exists(Filename) && GameManager.Instance.isGameOver == true)
@@ -158,7 +167,21 @@ public class ScoreScript : MonoBehaviour
             File.AppendAllText(Filename, output + "\n");
             Debug.Log("WriteHighScore() fired!");
         }
+        
     }
+
+    IEnumerator UploadNewHighScore(string username, int score)
+    {
+        WWW www = new WWW(baseURL + privCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
+        yield return www;
+        if (string.IsNullOrEmpty(www.error))
+            print("Upload Successful");
+        else
+        {
+            print("Error uploading: " + www.error);
+        }
+    }
+
     public void LoadHighScore()
     {
         string Filename = Application.dataPath + "/Scores.dat";
@@ -176,12 +199,66 @@ public class ScoreScript : MonoBehaviour
                 {
                     GameManager.Instance.HighScore = int.Parse(ScoreDataResult2[1]);
                 }
+                StartCoroutine("DownloadHighscoresFromDatabase");
                 //RefreshHighScore();
             }
             //Debug Stuff
             Debug.Log("LoadHighScore() fired!");
             Debug.Log("Result: " + ScoreDataResult[0]);
         }
+    }
+    IEnumerator DownloadHighscoresFromDatabase()
+    {
+        WWW www = new WWW(baseURL + pubCode + "/quote/10");
+        yield return www;
+
+        if (string.IsNullOrEmpty(www.error))
+            ShowOnlineScores(www.text);
+        else
+        {
+            print("Error Downloading: " + www.error);
+        }
+    }
+    public void ShowOnlineScores(string scores)
+    {
+        GameObject onlineScores = GameObject.FindGameObjectWithTag("OnlineScores");
+        string[] OnlineScoreResult;
+        OnlineScoreResult = scores.Split('\n');
+        onlineScores.GetComponent<Text>().text = "";
+        int zt = 0;
+        int t = 0;
+        string DisplayString = "";
+        foreach (string xt in OnlineScoreResult)
+        {
+            string[] OnlineScoreResult2 = xt.Split(',');
+            //Debug Stuff
+            zt = 0;
+            Debug.Log("ShowOnlineScores() fired!");
+            Debug.Log("Array Length: " + OnlineScoreResult.GetUpperBound(t));
+            Debug.Log("Index 0: " + OnlineScoreResult[0]);
+            Debug.Log("ZT Value: " + zt.ToString());
+            Debug.Log("XT Value: " + xt);
+            if (xt.Length > 3)
+            {
+                DisplayString = OnlineScoreResult2[zt] + " " + OnlineScoreResult2[zt + 1];
+                DisplayString = DisplayString.Replace('"', ' ');
+                onlineScores.GetComponent<Text>().text = onlineScores.GetComponent<Text>().text + DisplayString + "\n";
+                if (zt == 0)
+                {
+                    zt += 2;
+                }
+                else
+                {
+                    zt += 3;
+                }
+                //GameManager.Instance.HighScore = int.Parse(OnlineScoreResult2[1]);
+            }
+            //RefreshHighScore();
+            //Debug Stuff
+            Debug.Log("ShowOnlineScores() fired!");
+            Debug.Log("Result: " + DisplayString);
+        }
+        onlineScores.GetComponent<Text>().text = "Online High Scores:\n" + onlineScores.GetComponent<Text>().text;
     }
     public void ShowHighScores()
     {

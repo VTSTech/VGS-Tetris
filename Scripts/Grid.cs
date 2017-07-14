@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* 
- * v0.0.1-r11
+ * v0.0.2-r12
  * Written by Veritas83
  * www.NigelTodman.com
  * /Scripts/Grid.cs
