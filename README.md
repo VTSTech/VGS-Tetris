@@ -2,6 +2,24 @@
 
 Simple 2D Tetris Game in Unity
 
+v0.0.2-r12
+
+Added Online High Scores
+
+
+Added ShowOnlineScores()
+
+Added DownloadHighscoresFromDatabase()
+
+Added UploadNewHighScore()
+
+Uses dreamlo.com to store scores
+
+<img src="https://i.gyazo.com/6ace1a67a6d98d4acfb9c629c055d195.gif">
+
+<img src="https://i.gyazo.com/da38dc321ca153ef8e28c069c84bcb9c.png">
+
+
 v0.0.1-r11
 
 Added Pause Menu (Press Esc)
